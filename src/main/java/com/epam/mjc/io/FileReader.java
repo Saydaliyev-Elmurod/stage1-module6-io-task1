@@ -26,12 +26,14 @@ public class FileReader {
         String[] arr = text.split("\n");
         for (String line : arr) {
             String[] a = line.split(": ");
-            switch (a[0]) {
-                case "Name" -> profile.setName(a[1]);
-                case "Age" -> profile.setAge(Integer.parseInt(a[1]));
-                case "Email" -> profile.setEmail(a[1]);
-                case "Phone" -> profile.setPhone(Long.parseLong(a[1]));
-
+            if ("Name".equals(a[0])) {
+                profile.setName(a[1]);
+            } else if ("Age".equals(a[0])) {
+                profile.setAge(Integer.parseInt(a[1]));
+            } else if ("Email".equals(a[0])) {
+                profile.setEmail(a[1]);
+            } else if ("Phone".equals(a[0])) {
+                profile.setPhone(Long.parseLong(a[1]));
             }
         }
         return profile;
